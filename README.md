@@ -31,3 +31,18 @@ sudo apt-get install python-pip
 sudo pip install flask
 ```
 
+
+## Autoboot Chromium Browser
+1. Edit your autostart file.
+```
+sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
+```
+2. Add these lines to the file.
+```
+@xset s off
+@xset -dpms
+@xset s noblank
+@chromium-browser --incognito --kiosk http://0.0.0.0:8080
+```
+
+
