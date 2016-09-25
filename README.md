@@ -44,5 +44,12 @@ sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
 @xset s noblank
 @chromium-browser --incognito --kiosk http://0.0.0.0:8080
 ```
-
+3. Open your crontab configuration file with the following command:
+```
+crontab -e
+```
+4. Add the following line to your crontab configuration file:
+```
+@reboot python /home/pi/src/Information_Hub/app.py &
+```
 
