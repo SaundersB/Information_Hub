@@ -39,12 +39,19 @@ sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
 ```
 2. Add these lines to the file.
 ```
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+#@xscreensaver -no-splash
+# Auto run the browser
 @xset s off
 @xset -dpms
 @xset s noblank
-@chromium-browser --incognito --kiosk http://0.0.0.0:8080
+@sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' ~/.config/chromium/Default/Preferences
+@chromium-browser --noerrdialogs --kiosk http://192.168.1.100:8080
 ```
-3. Open your crontab configuration file with the following command:
+
+## Autoboot Flask Server
+1. Open your crontab configuration file with the following command:
 ```
 crontab -e
 ```
@@ -53,3 +60,8 @@ crontab -e
 @reboot python /home/pi/src/Information_Hub/app.py &
 ```
 
+## Install Python Library Dependencies
+```
+sudo pip install IP2Location
+sudo pip install geocoder
+```
